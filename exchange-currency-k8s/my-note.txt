@@ -1,0 +1,44 @@
+my-note.txt
+
+-- URLs
+
+curl http://34.30.3.129:8000/currency-exchange/from/USD/to/GBP
+
+http://localhost:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/111
+ 
+--
+
+
+YAML
+-- Why I wants to create deployment.yaml and service.yaml
+
+#get file
+kubectl get deployment [deployment-name] -o yaml 
+
+#save file
+Syntax: kubectl get deployment [deployment-name] -o yaml >> deployment.yaml
+
+kubectl get deployment currency-exchange -o yaml >> deployment.yaml
+
+kubectl get service currency-exchange -o yaml >> service.yaml
+
+
+-- edit replica from 1 to 2
+kubectl apply -f deployment.yaml
+
+kubectl get pod   
+-> We got 2 pod are running
+
+NAME                                       READY   STATUS    RESTARTS   AGE
+currency-exchange-86984bc99b-jcwp8         1/1     Running   0          6h48m
+currency-exchange-86984bc99b-jp77v         1/1     Running   0          80s 
+
+curl http://34.30.3.129:8000/currency-exchange/from/USD/to/GBP
+Result: load balacing apply in K8s
+--
+
+
+
+
+
+

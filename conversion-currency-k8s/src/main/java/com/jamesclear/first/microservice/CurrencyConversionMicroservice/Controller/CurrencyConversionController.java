@@ -22,30 +22,21 @@ public class CurrencyConversionController {
 	
 	@Autowired
 	private RestTemplate restTemplate;
-	
-	
-    /* Note
-     * 	getForEntity(): executes a GET request and returns an object of ResponseEntity class that contains both the status code and the resource as an object.
-		restTemplate.getForEntity(url, responseType, uriVariables);
-		// getBody()  return this.body, it does not create another instance.
-     *  */
+
 	@GetMapping("/currency-conversion/from/{from}/to/{to}/quanlity/{quanlity}")
 	public ResponseEntity<CurrencyConversionBean> getCurrent(@PathVariable("from") String from
 			,@PathVariable("to") String to
 			,@PathVariable("quanlity") String quanlity) {
 		
 		System.out.println("restTemplate " + "/currency-conversion/from/{from}/to/{to}/quanlity/{quanlity}");
-		logger.info(" Log at CurrencyConversionController method getCurrent rest template ", this);
-		
-	
+		logger.info(" Log at CurrencyConversionController.class method getCurrent rest template ", this);
+
 		String url = "http://localhost:8000/currency-exchange/from/{from}/to/{to}";
-		
 		HashMap<String, String> variables = new HashMap<String, String>();
 		variables.put("from", from);
 		variables.put("to", to);
 	
 		ResponseEntity<CurrencyConversionBean> responseConversion = restTemplate.getForEntity(url,CurrencyConversionBean.class, variables);
-
 		CurrencyConversionBean bean  = responseConversion.getBody();
 		bean.setTotalCalculatedAmount(bean.getConversionMultiple() * Double.valueOf(quanlity));
 		bean.setQuantity(Integer.valueOf(quanlity));
@@ -57,15 +48,11 @@ public class CurrencyConversionController {
 	public ResponseEntity<CurrencyConversionBean> currencyConverse(@PathVariable("from") String from
 			,@PathVariable("to") String to
 			,@PathVariable("quanlity") String quanlity) {
-		
-		System.out.println("FEIGN " + "/currency-conversion/from/{from}/to/{to}/quanlity/{quanlity}");
-		logger.info(" Log at FEIGN , CurrencyConversionController.class method  currencyConverse rest template ", this);
-	
+
+		//CHANGE-K8S
+		logger.info(" Feign - CurrencyConversionController.class method: currencyConverse called with {} to {} with {}", from, to);
 		ResponseEntity<CurrencyConversionBean> responseConversion =  null;
-		// We don't have to repeate url localhost:8000 all over the place
 		responseConversion = currencyFeignProxy.callCurrencyExchangeService(from, to);
-		
-		// getBody()  return this.body, it does not create another instance.
 		CurrencyConversionBean bean  = responseConversion.getBody();
 		bean.setTotalCalculatedAmount(bean.getConversionMultiple() * Double.valueOf(quanlity));
 		bean.setQuantity(Integer.valueOf(quanlity));

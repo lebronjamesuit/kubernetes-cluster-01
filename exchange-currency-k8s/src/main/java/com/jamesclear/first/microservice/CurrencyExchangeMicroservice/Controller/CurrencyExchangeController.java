@@ -3,7 +3,6 @@ package com.jamesclear.first.microservice.CurrencyExchangeMicroservice.Controlle
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +20,6 @@ public class CurrencyExchangeController {
 	private Environment environment;
 	
 	@Autowired
-	private ServerProperties serverProperties;
-	
-	@Autowired
 	private CurrencyRepo currencyRepo;
 	
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
@@ -32,20 +28,22 @@ public class CurrencyExchangeController {
 		
 		// both can be useful
 		System.out.println(environment.getProperty("local.server.port"));
-		System.out.println(serverProperties.getPort());
-		
 		logger.info("Log at CurrencyExchangeController.class, path exchangeCurrency");
-		//currency-exchange-service,
-		// Trace id: 7db302f5ab910385889429ef76018255,f97b4bb4d6ac7cc0
-		
-		String port = serverProperties.getPort().toString();
-		
+
 		CurrencyExchange currencyExchange = currencyRepo.findByFromAndTo(from, to);
 		if(currencyExchange == null) {
 			throw new RuntimeException("no found");
 		}
-		currencyExchange.setEnvironment(port);
-			
+
+		String port = environment.getProperty("local.server.port");
+
+		//CHANGE-KUBERNETES
+		String host = environment.getProperty("HOSTNAME");
+		String version = "v11";
+
+		currencyExchange.setEnvironment(port + " " + version + " " + host);
+
+
 		return currencyExchange;
 	}
 }

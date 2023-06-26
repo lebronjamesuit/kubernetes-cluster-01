@@ -5,8 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-//@FeignClient(value = "exchange-currency", url = "localhost:8000" )
-@FeignClient(name="currency-exchange-service")
+//@FeignClient(name="currency-exchange")   if I want it talks to Eureka
+
+//CHANGE-KUBERNETES
+@FeignClient(name = "currency-exchange", url = "${CURRENCY_EXCHANGE_SERVICE_HOST:http://localhost}:8000")
 public interface CurrencyConversionProxy {
 
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  generation: 1
+  labels:
+    app: currency-exchange
+  name: currency-exchange
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: currency-exchange
+  strategy:
+    rollingUpdate:
+      maxSurge: 30%
+      maxUnavailable: 30%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: currency-exchange
+    spec:
+      containers:
+      - image: jamesfloatingmarket1508/mss-currency-exchange-k8s:0.0.11-SNAPSHOT
+        imagePullPolicy: IfNotPresent
+        name: mss-currency-exchange-k8s
+        resources: {}
+        terminationMessagePolicy: File
+

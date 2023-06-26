@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"cloud.google.com/neg":"{\"ingress\":true}"},"creationTimestamp":"2023-06-26T06:45:32Z","finalizers":["service.kubernetes.io/load-balancer-cleanup"],"labels":{"app":"currency-exchange"},"name":"currency-exchange","namespace":"default","resourceVersion":"2261134","uid":"6c825894-c3e2-42e9-ac07-5f20ed277e6c"},"spec":{"allocateLoadBalancerNodePorts":true,"clusterIP":"10.0.9.149","clusterIPs":["10.0.9.149"],"externalTrafficPolicy":"Cluster","internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"nodePort":30215,"port":8000,"protocol":"TCP","targetPort":8000}],"selector":{"app":"currency-exchange"},"sessionAffinity":"None","type":"LoadBalancer"},"status":{"loadBalancer":{"ingress":[{"ip":"34.30.3.129"}]}}}
+  creationTimestamp: "2023-06-26T06:45:32Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: currency-exchange
+  name: currency-exchange
+  namespace: default
+  resourceVersion: "2463028"
+  uid: 6c825894-c3e2-42e9-ac07-5f20ed277e6c
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.0.9.149
+  clusterIPs:
+  - 10.0.9.149
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 30215
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: currency-exchange
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 34.30.3.129

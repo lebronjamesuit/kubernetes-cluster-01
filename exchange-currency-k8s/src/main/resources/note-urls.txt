@@ -1,0 +1,10 @@
+
+Exchange
+
+http://localhost:8000/currency-exchange/from/USD/to/GBP
+
+After deploy to Kubernetes
+http://35.184.83.147:8000/currency-exchange/from/USD/to/GBP
+curl http://35.184.83.147:8000/currency-exchange/from/USD/to/GBP
+
+35.184.83.147
