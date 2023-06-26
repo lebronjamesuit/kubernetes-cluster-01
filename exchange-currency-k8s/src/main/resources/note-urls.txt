@@ -8,3 +8,12 @@ http://35.184.83.147:8000/currency-exchange/from/USD/to/GBP
 curl http://35.184.83.147:8000/currency-exchange/from/USD/to/GBP
 
 35.184.83.147
+
+
+Conversion
+http://localhost:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/111
+
+
+
+
+
