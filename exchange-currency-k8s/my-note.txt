@@ -4,8 +4,7 @@ my-note.txt
 
 curl http://34.30.3.129:8000/currency-exchange/from/USD/to/GBP
 
-http://localhost:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/111
- 
+
 --
 
 
