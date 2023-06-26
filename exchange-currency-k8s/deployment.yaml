@@ -18,7 +18,6 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: currency-exchange
     spec:
@@ -26,25 +25,16 @@ spec:
       - image: jamesfloatingmarket1508/mss-currency-exchange-k8s:0.0.11-SNAPSHOT
         imagePullPolicy: IfNotPresent
         name: mss-currency-exchange-k8s
-        resources: {}
-        terminationMessagePolicy: File
+      restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  finalizers:
-  - service.kubernetes.io/load-balancer-cleanup
   labels:
     app: currency-exchange
   name: currency-exchange
   namespace: default
 spec:
-  allocateLoadBalancerNodePorts: true
-  externalTrafficPolicy: Cluster
-  internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
   ports:
   - nodePort: 30215
     port: 8000
