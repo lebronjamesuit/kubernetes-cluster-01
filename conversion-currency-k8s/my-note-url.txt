@@ -1,1 +1,27 @@
 my-note-url.txt
+
+
+local
+http://localhost:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/111
+
+prod
+http://35.239.207.222:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/111
+
+
+# Custom
+
+This is default environment in Kubernetes 
+${CURRENCY_EXCHANGE_SERVICE_HOST}:8000
+@FeignClient(name = "currency-exchange", url = "${CURRENCY_EXCHANGE_SERVICE_HOST:http://localhost}:8000")
+
+CURRENCY_EXCHANGE_SERVICE_HOST  is default environment
+
+- CURRENCY_EXCHANGE maps with deployment name
+
+
+
+NAME                          TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE
+service/currency-conversion   LoadBalancer   10.0.1.7      35.239.207.222   8100:31742/TCP   133m
+NAME                                       READY   STATUS    RESTARTS   AGE
+pod/currency-conversion-77f89fbf48-5v59v   1/1     Running   0          4m16s
+pod/currency-conversion-77f89fbf48-wvxkb   1/1     Running   0          4m13s

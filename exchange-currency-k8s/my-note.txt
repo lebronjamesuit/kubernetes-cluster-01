@@ -1,10 +1,7 @@
 my-note.txt
 
 -- URLs
-
 curl http://34.30.3.129:8000/currency-exchange/from/USD/to/GBP
-
-
 --
 
 
@@ -22,7 +19,7 @@ kubectl get deployment currency-exchange -o yaml >> deployment.yaml
 kubectl get service currency-exchange -o yaml >> service.yaml
 
 
--- edit replica from 1 to 2
+-- edit replica from 1 to 2 or 3
 kubectl apply -f deployment.yaml
 
 kubectl get pod   
@@ -37,7 +34,9 @@ Result: load balacing apply in K8s
 --
 
 
+service/currency-exchange     LoadBalancer   10.0.12.127   35.184.83.147    8000:30215/TCP   3h32m
 
-
-
-
+curl http://35.184.83.147:8000/currency-exchange/from/USD/to/GBP
+NAME                                       READY   STATUS    RESTARTS   AGE
+pod/currency-exchange-7c7f6dcfb9-lnhr7     1/1     Running   0          4m57s
+pod/currency-exchange-7c7f6dcfb9-sqxx4     1/1     Running   0          4m53s
