@@ -25,9 +25,12 @@ spec:
       - image: jamesfloatingmarket1508/mss-currency-conversion-k8s:0.0.12-SNAPSHOT
         imagePullPolicy: IfNotPresent
         name: mss-currency-conversion-k8s
-        env:
-        - name: CURRENCY_EXCHANGE_CUSTOM
-          value: "currency-exchange"
+        envFrom:
+          - configMapRef:
+              name: currency-conversion-map  
+        # env:
+        # - name: CURRENCY_EXCHANGE_CUSTOM
+        #   value: "http://currency-exchange"
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -46,4 +49,12 @@ spec:
     app: currency-conversion
   sessionAffinity: None
   type: LoadBalancer
+---
+apiVersion: v1
+data:
+  CURRENCY_EXCHANGE_CUSTOM: http://currency-exchange
+kind: ConfigMap
+metadata:
+  name: currency-conversion-map
+  namespace: default
 

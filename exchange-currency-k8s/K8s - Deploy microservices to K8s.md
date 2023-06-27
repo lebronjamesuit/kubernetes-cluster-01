@@ -4,13 +4,11 @@ How to deploy microservices to kubernetes
 2.  Docker push ...
 
 
-
 kubectl version
 
 kubectl --version
 
 kubectl create deployment  currency-exchange --image=jamesfloatingmarket1508/mss-currency-exchange-k8s:0.0.11-SNAPSHOT
-
 
 
 kubectl expose deployment currency-exchange --type=LoadBalancer --port=8000
@@ -69,6 +67,11 @@ I run it 6 times to see Load balancing between 3 replicaset.
 curl http://35.184.83.147:8000/currency-exchange/from/USD/to/GBP
 
 
+
+
+# What about ConfigMap
+
+kubectl create configmap <configmap-name> --from-literal=<key1>=<value1> --from-literal=<key2>=<value2>
 
 
 
