@@ -23,10 +23,10 @@ spec:
     spec:
       containers:
       - image: jamesfloatingmarket1508/mss-currency-exchange-k8s:0.0.13-SNAPSHOT
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: mss-currency-exchange-k8s
         readinessProbe:
-           httpGet:
+          httpGet:
             port: 8000
             path: /actuator/health/readiness
         livenessProbe:

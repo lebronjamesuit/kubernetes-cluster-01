@@ -22,7 +22,7 @@ spec:
         app: currency-conversion
     spec:
       containers:
-      - image: jamesfloatingmarket1508/mss-currency-conversion-k8s:0.0.12-SNAPSHOT
+      - image: jamesfloatingmarket1508/mss-currency-conversion-k8s:0.0.13-SNAPSHOT
         imagePullPolicy: IfNotPresent
         name: mss-currency-conversion-k8s
         envFrom:
