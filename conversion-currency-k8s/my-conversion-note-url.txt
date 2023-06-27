@@ -5,7 +5,7 @@ local
 http://localhost:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/111
 
 prod
-http://35.239.207.222:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/111
+curl http://35.239.207.222:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/111
 
 
 # Custom
@@ -25,3 +25,7 @@ service/currency-conversion   LoadBalancer   10.0.1.7      35.239.207.222   8100
 NAME                                       READY   STATUS    RESTARTS   AGE
 pod/currency-conversion-77f89fbf48-5v59v   1/1     Running   0          4m16s
 pod/currency-conversion-77f89fbf48-wvxkb   1/1     Running   0          4m13s
+
+
+watch -n 0.1 curl http://35.239.207.222:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/111
+

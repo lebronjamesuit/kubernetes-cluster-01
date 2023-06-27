@@ -40,3 +40,11 @@ curl http://35.184.83.147:8000/currency-exchange/from/USD/to/GBP
 NAME                                       READY   STATUS    RESTARTS   AGE
 pod/currency-exchange-7c7f6dcfb9-lnhr7     1/1     Running   0          4m57s
 pod/currency-exchange-7c7f6dcfb9-sqxx4     1/1     Running   0          4m53s
+
+
+
+
+# Rollout revision
+
+kubectl rollout status deployment/currency-exchange --output=jsonpath='{.metadata.annotations.deployment\.kubernetes\.io/revision}'
+
