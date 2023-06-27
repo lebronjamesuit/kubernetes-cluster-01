@@ -43,8 +43,14 @@ pod/currency-exchange-7c7f6dcfb9-sqxx4     1/1     Running   0          4m53s
 
 
 
-
 # Rollout revision
-
 kubectl rollout status deployment/currency-exchange --output=jsonpath='{.metadata.annotations.deployment\.kubernetes\.io/revision}'
+
+# I am thinking about avoid downtime when deploy services
+Spring has health check systems Liveness and LiveNess , status is up.
+http://35.184.83.147:8000/actuator/health/liveness
+http://35.184.83.147:8000/actuator/health/liveness
+
+-- I need to enbale these two in GKE
+
 

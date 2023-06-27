@@ -73,6 +73,11 @@ curl http://35.184.83.147:8000/currency-exchange/from/USD/to/GBP
 
 kubectl create configmap <configmap-name> --from-literal=<key1>=<value1> --from-literal=<key2>=<value2>
 
+add config map to yaml file
+
+
+
+
 
 
 

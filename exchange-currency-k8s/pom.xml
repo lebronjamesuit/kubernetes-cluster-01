@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.james.microservice.k8s</groupId>
 	<artifactId>currency-exchange-k8s</artifactId>
-	<version>0.0.12-SNAPSHOT</version>
+	<version>0.0.13-SNAPSHOT</version>
 	<name>exchange-k8s</name>
 	<description>try cluster</description>
 	<properties>
