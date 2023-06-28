@@ -23,10 +23,7 @@ spec:
     spec:
       containers:
       - image: jamesfloatingmarket1508/mss-currency-exchange-k8s:0.0.13-SNAPSHOT
-        imagePullPolicy: IfNotPresent
-        resources:
-          requests:
-             cpu: 50m
+        imagePullPolicy: Always
         name: mss-currency-exchange-k8s
         readinessProbe:
           httpGet:

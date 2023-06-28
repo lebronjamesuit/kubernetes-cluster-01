@@ -7,7 +7,6 @@ curl http://34.30.3.129:8000/currency-exchange/from/USD/to/GBP
 
 YAML
 -- Why I wants to create deployment.yaml and service.yaml
-
 #get file
 kubectl get deployment [deployment-name] -o yaml 
 
@@ -51,6 +50,21 @@ Spring has health check systems Liveness and LiveNess , status is up.
 http://35.184.83.147:8000/actuator/health/liveness
 http://35.184.83.147:8000/actuator/health/liveness
 
--- I need to enbale these two in GKE
+-- The command That I use to auto StackOverflowError
+
+Kubectl autoscale deployment currency-exchange --min=1 --max=3 --cpu-percent=5
+
+-> horizontalpodautoscaler.autoscaling/currency-exchange autoscaled
+
+watch -n 0.1  curl http://35.184.83.147:8000/currency-exchange/from/USD/to/GBP
+
+
+# You need to run metric server to make below commands working with correct data:
+kubectl get hpa
+kubectl top node
+kubectl top pods
+kubectl get pods --all-namespaces
+
+
 
 
