@@ -27,5 +27,5 @@ pod/currency-conversion-77f89fbf48-5v59v   1/1     Running   0          4m16s
 pod/currency-conversion-77f89fbf48-wvxkb   1/1     Running   0          4m13s
 
 
-watch -n 0.1 curl http://35.239.207.222:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/111
+watch -n 0.001 curl http://35.239.207.222:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/111
 
