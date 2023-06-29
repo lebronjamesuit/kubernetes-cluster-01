@@ -2,11 +2,9 @@
 
 # Deplo microservice to GKE (Google Kubernetes Engine)
 
-# Maven
-  Build image for Dcoker Hub from Maven
-  mvn spring-boot:build-image -DskipTests
+Given that we all know how to build docker image from local Docker Deamon.
 
-# Docker Images: 
+# Docker Images: Pay attention to image:TAG please.
   1)  You can pull docker image to your OWN local machine
     -- Exchange --- 
     "docker pull jamesfloatingmarket1508/mss-currency-exchange-k8s:0.0.11-SNAPSHOT"
@@ -47,20 +45,15 @@ a.1) Exchange service
 
 kubectl create deployment currency-exchange --image=jamesfloatingmarket1508/mss-currency-exchange-k8s:0.0.11-SNAPSHOT
 
-
 kubectl expose deployment currency-exchange --type=LoadBalancer --port=8000
 
 <img width="1008" alt="Screenshot 2023-06-28 at 15 00 40" src="https://github.com/lebronjamesuit/kubernetes-cluster-01/assets/11584601/ed209d67-f1dd-4746-a435-d06761e78e20">
 
 kubectl get service
 
-NAME                TYPE           CLUSTER-IP   EXTERNAL-IP    PORT(S)          AGE
-currency-exchange   LoadBalancer   10.0.6.199   34.31.250.64   8000:30513/TCP   2m14s
-kubernetes          ClusterIP      10.0.0.1     <none>         443/TCP          5d6h
-
-
 curl http://EXTERNAL-IP:port/currency-exchange/from/USD/to/GBP
 
+My url:
 curl http://34.31.250.64:8000/currency-exchange/from/USD/to/GBP
 
 a.2) Conversion service
@@ -71,6 +64,7 @@ kubectl create deployment currency-conversion --image=jamesfloatingmarket1508/ms
 
 kubectl expose deployment currency-conversion --type=LoadBalancer --port=8100
 
+My URL
 
 curl http://35.202.191.27:8100/feign/currency-conversion/from/USD/to/GBP/quanlity/123
 
