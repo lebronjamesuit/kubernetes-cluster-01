@@ -31,6 +31,16 @@ Create trial Google Kubernetes Cluster
 
 <img width="1233" alt="Screenshot 2023-06-28 at 14 52 06" src="https://github.com/lebronjamesuit/kubernetes-cluster-01/assets/11584601/5d3c69d4-7c17-430a-b55b-a2ea9273e4ff">
 
+Prerequisite: 2 Steps
+
+Step 1: Make sure you have GCloud be installed in your PC.
+
+https://cloud.google.com/sdk/docs/install
+
+Step 2: Authentication with Google Account that has Kubernetes Cluster.
+
+gcloud container clusters get-credentials {your cluster name} --zone us-central1-c --project {project id}
+
 a) Manual: 
 
 a.1) Exchange service
