@@ -120,6 +120,23 @@ Auto Scaling down to default replica set 1.
 <img width="1227" alt="Screenshot 2023-06-28 at 16 59 16" src="https://github.com/lebronjamesuit/kubernetes-cluster-01/assets/11584601/e65df2bc-fbb8-4d8e-bed3-f9ac6f24b7cd">
 
 
+# Key features of GCP - Google Kubernetes Engine (GKE)
+
+Orchestration
+
+Auto Scaling - Scale containers based on demand
+
+Service Discovery - Help microservices find one another
+
+Load Balancer - Distribute load among multiple instances of a microservice
+
+Self Healing - Do health checks and replace failing instances
+
+Zero Downtime Deployments - Release new versions without downtime
+
+
+
+
 
 
 
